@@ -1,35 +1,41 @@
-function Consulta () {
+function Tabela() {
 
-     return(
+    return(
         <>
-        <h1 className="text-left text-red-600">Partcipantes</h1>
-        <div className="shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <h2 className="text-left text-red-600">Filtro</h2>
-            <form className="bg-white grid gap-y-6 grid-cols-4 text-left ml-8">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="plano">Plano</label>
-            <select id="plano" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                <option>Selecione</option>
-            </select>
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="cpf">CPF</label>
-            <input id="plano" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="dataIncricao">Data de Inscrição</label>
-            <input id="plano" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="orgao">Orgão</label>
-            <select id="plano" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                <option>Selecione</option>
-            </select>
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="participante">Participante</label>
-            <input id="plano" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="status">Status</label>
-            <input id="plano" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
-            </form>
-            <div className="flex gap-x-4 mt-4 justify-center">
-                <button value={"Limpar"} className="bg-gray-400 text-white">Limpar</button>
-                <button value={"Consultar"} className="bg-red-700 text-white">Consulta</button>
-            </div>
-        </div>
+          <table className="shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <thead className="text-white bg-red-700">
+                <tr className="grid grid-cols-9 divide-x items-center">
+                    <th>ÓRGÃO</th>
+                    <th>NOME</th>
+                    <th>CPF</th>
+                    <th>PARTICPAANTE</th>
+                    <th>%DESCONTO</th>
+                    <th>TRIBUTAÇÃO</th>
+                    <th className="whitespace-nowrap">DATA DA INSCRIÇÃO</th>
+                    <th>STATUS</th>
+                    <th>AÇÕES</th>
+                </tr>
+            </thead>
+            <tbody className="text-white bg-gray-100">
+                <tr className="grid grid-cols-9 divide-x items-center text-black">
+                    <td>Alesp</td>
+                    <td>Cristina</td>
+                    <td>36729327871</td>
+                    <td>Cristina</td>
+                    <td>4%</td>
+                    <td>privada</td>
+                    <td>10/05/2022</td>
+                    <td>ativo</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+          </table>
+          <div className="items-center text-center mt-4 flex gap-x-4 justify-center">
+            <button className="bg-red-600 text-white">Novo Cadastro</button>
+            <button className="bg-red-600 text-white">Gerar Arquivo</button>
+          </div>
         </>
-     );
+    );
 };
 
-export default Consulta;
+export default Tabela;
