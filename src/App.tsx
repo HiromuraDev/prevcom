@@ -1,4 +1,4 @@
-import P1TL2 from './feature/pages/P1TL2'
+import P1TL2 from './pages/P002-Accession/P1TL2'
 import './App.css'
 
 function App() {

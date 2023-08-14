@@ -1,5 +1,5 @@
-import Consulta from "../components/c1-filtro-consulta";
-import Tabela from "../components/c2-tabela-consulta";
+import Consulta from "../../components/C001-Filter-Search";
+import Tabela from "../../components/C002-Table-Search";
 
 function P1TL1 (){
 
