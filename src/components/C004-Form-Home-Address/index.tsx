@@ -9,7 +9,7 @@ function FormHomeAddress() {
        console.log(e)
     }
 
-    const checkCEP = (e) => {
+    const checkCEP = (e: any) => {
         const cep: number = e.target.value.replace(/\D/g, "");
         console.log(cep);
         fetch(`https://viacep.com.br/ws/${cep}/json/`)

@@ -1,14 +1,11 @@
 import { useForm } from "react-hook-form"
+/* import { PostJSON } from "../../services/AccessionServices"; */
 
 function FormPersonalData() {
 
-    const {setValue, handleSubmit, register} = useForm()
-
-    const onSubmit = (e: any) => {
-        console.log(e)
-     }
+    const {handleSubmit, register} = useForm()
  
-     const apiTeste = (e) => {
+/*      const apiTeste = () => {
          fetch('http://localhost:8084/atlprevcomp/v1/tl1/pesquisa-participantes')
          .then(res => res.json()).then(data => {
              console.log(data[0].orgao);
@@ -17,7 +14,60 @@ function FormPersonalData() {
              setValue('cpf', data[0].numcpf)
              setValue('identidade', data[0].datainscricao)
          })
-     };
+     }; */
+
+/*      <script src="../path/to/flowbite/dist/datepicker.js"></script> */
+
+/*      const newUser = {
+        nome            : getValues('nome'),
+        numCpf          : getValues('cpf'),
+        numMatricula    : getValues('matricula'),
+        datNascimento   : getValues('dataNascimento'),
+        desNaturalidade : getValues('naturalidade'),
+        codSexo         : getValues('sexo'),
+        codEstCivil     : getValues('estadoCivil'),
+        nomPai          : getValues('pai'),
+        nomMae          : getValues('mae'),
+        nomConjuge      : getValues('conjuge'),
+
+     }
+
+     console.log(newUser); */
+
+    const onSubmit = (e: any) => {
+       e.preventDefault();
+
+       console.log(e)
+    }
+
+    const postJSON = data =>  {
+        return fetch("http://localhost:8084/atlprevcomp/v1/tl2/gravar-ficha", 
+             {method: "POST",
+             headers: {
+                "Content-Type": 
+                "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        
+        .then((response) => response.json())
+            .then((data) => {
+                console.log("Create Success: ", data);
+            })
+            .catch((error) => {
+                console.error("ERROR: ", error);
+            })
+}
+     
+
+
+
+     
+/*      const data = { username: "example" };
+     postJSON(data); */
+
+
+/*      console.log(postJSON) */
     
     return(
     <>
@@ -28,17 +78,17 @@ function FormPersonalData() {
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div className="grid grid-cols-1">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="nome">Nome:</label>
-                <input {...register('nome')} onBlur={apiTeste}  id="nome" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
+                <input {...register('nome')} /* onChange={newUser} */name="nome"  id="nome" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
                 </div>
                 <div className="grid grid-cols-1">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="cpf">CPF:</label>
-                <input {...register('cpf')} id="cpf" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
+                <input {...register('numCpf')} /* onChange={postJSON} */ id="numCpf" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
                 </div>
             </div>
             <div className="grid gap-6 mb-6 md:grid-cols-3">
                 <div className="grid grid-cols-1">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="naturalidade">Naturalidade:</label>
-                <input {...register('naturalidade')} id="naturalidade" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
+                <input {...register('desNaturalidade')}/*  onChange={postJSON} */ id="desNaturalidade" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
                 </div>
                 <div className="grid grid-cols-1">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="sexo">Sexo:</label>
@@ -48,7 +98,7 @@ function FormPersonalData() {
                 </div>
                 <div className="grid grid-cols-1">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="estadoCivil">Estado Civil:</label>
-                <select id="estadoCivil" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <select {...register('codEstCivil')} /* onChange={postJSON} */ id="codEstCivil" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     <option>Selecione</option>
                 </select>
                 </div>
@@ -56,16 +106,24 @@ function FormPersonalData() {
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div className="grid grid-cols-1">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="identidade">Identidade:</label>
-                <input  {...register('dataEmissao')} id="identidade" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
+                <input  {...register('identidade')} /* onChange={postJSON} */ id="identidade" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
                 </div>
                 <div className="grid grid-cols-1">
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="dataEmissao">Data da Emissão:</label>
-                <input type="date" id="dataEmissao" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
+                <input {...register('datEmissao')} /* onChange={postJSON} */ type="date" id="dataEmissao" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></input>
                 </div>
             </div>
+            <div className="items-center text-center mt-4 flex gap-x-4 justify-center">
+            <button /* onClick={postJSON} */ className="bg-gray-500 text-white">Limpar</button>
+            <button type="submit" /* onClick={PostJSON(...register(e))} */ className="bg-red-600 text-white">Salvar</button>
+          </div>
         </form>
+
       </div>
+      <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     </>
+    
+    
     )
 }
 
